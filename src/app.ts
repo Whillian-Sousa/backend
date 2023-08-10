@@ -1,4 +1,4 @@
-import express, { Application } from 'express'
+import express, { Application } from 'express';
 import { connect } from './infra/database';
 import { errorMiddleware } from './middlewares/error.middleware';
 import { EventRoutes } from './routers/event.routers';
@@ -20,11 +20,11 @@ class App{
         this.app.use(errorMiddleware)
     }
     private middlewaresInitialize() {
-        this.app.use(express.json())
+        this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));   
     }
     listen() {
-        this.app.listen(3333, ()=>console.log('server is running'))
+        this.app.listen(3333, () => console.log('server is running'))
     }
 }
-export {App}
+export { App };
