@@ -31,7 +31,10 @@ describe('Event test', () =>{
             .attach('banner', '/home/Whillian/Pictures/banner.jpg')
             .attach('flyers', '/home/Whillian/Pictures/flyers1.jpg')
             .attach('flyers', '/home/Whillian/Pictures/flyers2.jpg');
-
+        if (response.error){
+            console.log("🚀 ~ file: Events.test.ts:35 ~ it ~ error:", response.error);
+            
+        }
             expect(response.status).toBe(201);
             expect(response.body).toEqual({ message: 'Evento criado com sucesso.' });
     });
