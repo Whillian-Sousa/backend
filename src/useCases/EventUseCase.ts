@@ -11,6 +11,8 @@ class EventUseCase {
       throw new HttpException(400, "Banner is required");
     }
     if (!eventData.flyers) throw new HttpException(400, "Flyers is required");
+    if (!eventData.date) throw new HttpException(400, "Date is required");
+    
     if (!eventData.location)
       throw new HttpException(400, "Location is required");
 
@@ -55,6 +57,19 @@ class EventUseCase {
   async findEventsByCategory(category: string) {
     if (!category) throw new HttpException(400, "Category is required");
     const events = await this.eventRepository.findEventsByCategory(category);
+   
+    return events;
+  }
+  async findEventsByName(name: string) {
+    if (!name) throw new HttpException(400, "Name is required");
+    const events = await this.eventRepository.findEventsByName(name);
+   
+    return events;
+  }
+  async findEventById(id: string) {
+    if (!id) throw new HttpException(400, "Id is required");
+    const events = await this.eventRepository.findEventById(id);
+   
     return events;
   }
 
