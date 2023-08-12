@@ -2,6 +2,7 @@ import request from "supertest";
 import { App } from "../app";
 const app = new App()
 const express = app.app
+
 describe('Event test', () =>{
     
     it('/POST Event', async() =>{
@@ -25,6 +26,7 @@ describe('Event test', () =>{
             .field('description', event.description)
             .field('city', event.city)
             .field('counpons', event.coupons)
+            .field('categories', event.categories)
             .field('location[latitude]', event.location.latitude)
             .field('location[longitude]', event.location.longitude)
             .field('price[sector]', event.price[0].sector)
