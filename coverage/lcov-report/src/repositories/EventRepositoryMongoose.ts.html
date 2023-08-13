@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.62% </span>
+                <span class="strong">76.54% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>53/74</span>
+                <span class='fraction'>62/81</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>6/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">57.14% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/6</span>
+                <span class='fraction'>4/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.62% </span>
+                <span class="strong">76.54% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>53/74</span>
+                <span class='fraction'>62/81</span>
             </div>
         
             
@@ -137,20 +137,14 @@
 <a name='L72'></a><a href='#L72'>72</a>
 <a name='L73'></a><a href='#L73'>73</a>
 <a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -189,12 +183,32 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -215,6 +229,7 @@
 import { Event } from "../entities/Event";
 import { EventRepository } from "./EventRepository";
 import { Location } from "../entities/Location";
+import { User } from "../entities/User";
 &nbsp;
 const eventSchema = new mongoose.Schema({
   title: String,
@@ -244,12 +259,12 @@ const eventSchema = new mongoose.Schema({
 const EventModel = mongoose.model("Event", eventSchema);
 &nbsp;
 class EventRepositoryMongoose implements EventRepository {
-  async add(event: Event): Promise&lt;Event&gt; {
-    const eventModel = new EventModel(event);
-&nbsp;
-    await eventModel.save();
-    return event;
-  }
+<span class="fstat-no" title="function not covered" >  async add(event: Event): Promise&lt;Event&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    const eventModel = new EventModel(event);</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    await eventModel.save();</span>
+<span class="cstat-no" title="statement not covered" >    return event;</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
   async findByLocationAndData(
     location: Location,
     date: Date
@@ -258,20 +273,26 @@ class EventRepositoryMongoose implements EventRepository {
 &nbsp;
     return findEvent <span class="branch-0 cbranch-no" title="branch not covered" >? findEvent.toObject() </span>: undefined;
   }
-<span class="fstat-no" title="function not covered" >  async findEventById(id: string): Promise&lt;Event | undefined&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    const findEvent = await EventModel.findOne({ id }).exec();</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    return findEvent ? findEvent.toObject() : undefined;</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
-<span class="fstat-no" title="function not covered" >  async findEventsByCity(city: string): Promise&lt;Event[]&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    const findEvent = await EventModel.find({ city }).exec();</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    return findEvent.map((event) =&gt; event.toObject());</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
-<span class="fstat-no" title="function not covered" >  async findEventsByCategory(category: string): Promise&lt;Event[]&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    const findEvent = await EventModel.find({ categories: category }).exec();</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    return findEvent.map((event) =&gt; event.toObject());</span>
+  async findEventById(id: string): Promise&lt;Event | undefined&gt; {
+    const findEvent = await EventModel.findOne({ _id: id }).exec();
+&nbsp;
+    return findEvent ? findEvent.toObject() <span class="branch-0 cbranch-no" title="branch not covered" >: undefined;</span>
+  }
+  async findEventsByCity(city: string): Promise&lt;Event[]&gt; {
+    const findEvent = await EventModel.find({ city }).exec();
+&nbsp;
+    return findEvent.map((event) =&gt; event.toObject());
+  }
+  async findEventsByCategory(category: string): Promise&lt;Event[]&gt; {
+    const findEvent = await EventModel.find({ categories: category }).exec();
+&nbsp;
+    return findEvent.map((event) =&gt; event.toObject());
+  }
+<span class="fstat-no" title="function not covered" >  async update(event: Event, id: string): Promise&lt;any&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    const eventUpdate = await EventModel.updateMany({ _id: id}, event);</span>
+<span class="cstat-no" title="statement not covered" >    console.log("🚀 ~ file: EventRepositoryMongoose.ts:66 ~ EventRepositoryMongoose ~ update ~ eventUpdate:", eventUpdate)</span>
+<span class="cstat-no" title="statement not covered" >    </span>
+<span class="cstat-no" title="statement not covered" >    return event;</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 <span class="fstat-no" title="function not covered" >  async findEventsByName(name: string): Promise&lt;Event[]&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    const findEvent = await EventModel.find({</span>
@@ -292,7 +313,7 @@ export { EventRepositoryMongoose };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-08-12T07:38:53.253Z
+                at 2023-08-13T01:13:31.140Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

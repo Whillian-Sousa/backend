@@ -75,14 +75,30 @@ class EventController {
         next(error)
       }
   }
-  async findEventById(
+  async findEventsById(
     request: Request,
     response: Response,
     next: NextFunction
   ){
     const { id } = request.params;
+    
     try {
-        const events = await this.eventUseCase.findEventById(String(name))
+        const events = await this.eventUseCase.findEventsById(String(id))
+        return response.status(200).json(events);
+    } catch (error) {
+        next(error)
+      }
+  }
+  async addParticipant(
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ){
+    const { name, email } = request.body
+    const { id } = request.params;
+    
+    try {
+        const events = await this.eventUseCase.addParticipant(id, name, email)
         return response.status(200).json(events);
     } catch (error) {
         next(error)
