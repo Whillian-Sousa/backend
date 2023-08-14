@@ -26,7 +26,7 @@ const categories = [
   },
   {
     name: 'Gastronômico',
-    icon: '/gastronomico.png',
+    icon: '/gastronomicos.png',
     route: 'gastronomic'
   },
   {
