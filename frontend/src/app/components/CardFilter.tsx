@@ -1,7 +1,9 @@
-export const BannerSecondary = () => {
-  return(
-    <div className="rounded">
-      <div className="w-full p-3 h-[150px] relative bg-black bg-opacity-25 rounded-3xl shadow">
+import { Button } from "./Form/Button";
+
+export const CardFilter = () => {
+  return (
+    <div className="rounded mb-6">
+      <div className="w-full p-3 h-[150px] relative bg-black bg-opacity-25 rounded-3xl rounded-b-none shadow">
         <div className="text-white absolute top-3">
           <p className="text-normal pb-1 font-bold">Jorge e Mateus</p>
           <div className="flex">
@@ -72,6 +74,17 @@ export const BannerSecondary = () => {
           </div>
         </div>
       </div>
+      <div className="w-full p-3 relative bg-slate-200 rounded-3xl rounded-t-none shadow">
+        <p className="text-sm text-black">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem
+          reiciendis nihil sint perferendis recusandae non laboriosam, maiores
+          soluta sed est maxime accusantium incidunt delectus eum! Officia
+          consequatur perferendis officiis rerum.
+        </p>
+        <div className="flex justify-center w-2/5 mx-auto my-4">
+          <Button title="Ver detalhes do evento" />
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
