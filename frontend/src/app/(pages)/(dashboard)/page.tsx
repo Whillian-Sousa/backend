@@ -1,12 +1,18 @@
 import { BannerPrimary } from "@/app/components/BannerPrimary";
 import { BannerSecondary } from "@/app/components/BannerSecondary";
 import { categories } from "@/app/utils/categories";
+import { fetchWrapper } from "@/app/utils/fetchWrapper";
 
-export default function Dashboard() {
+export default async function Dashboard() {
+  const response = await fetchWrapper("/events/main", {
+    method: "GET",
+  });
+
+  const secondareResponse = response.slice(1)
   return (
     <main>
       <div className="container mx-auto">
-        <BannerPrimary />
+        <BannerPrimary events={response[0]} />
         <div className="p-2 text-blue">
           <p className="text-2xl font-medium">Eventos em Destaque</p>
           <p className="text-base font-light">
@@ -15,9 +21,12 @@ export default function Dashboard() {
         </div>
 
         <div className="grid grid-cols-3 gap-4 mb-4">
-          <BannerSecondary />
-          <BannerSecondary />
-          <BannerSecondary />
+          {secondareResponse.map((event) => (
+          <>  
+          <BannerSecondary event={event} />
+          </>
+          ))}
+
         </div>
 
         <div className="p-2 text-blue">
