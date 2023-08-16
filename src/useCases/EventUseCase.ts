@@ -29,7 +29,8 @@ class EventUseCase {
     );
     eventData = {
       ...eventData,
-      city: cityName,
+      city: cityName.cityName,
+      formattedAddress: cityName.formattedAddress,
     };
 
     const result = await this.eventRepository.add(eventData);
@@ -40,7 +41,7 @@ class EventUseCase {
     const cityName = await this.getCityNameByCoordinates(latitude, longitude);
 
     const findEventByCity = await this.eventRepository.findEventsByCity(
-      cityName
+      cityName.cityName
     );
 
     const eventWithRadius = findEventByCity.filter((event) => {
@@ -61,6 +62,31 @@ class EventUseCase {
 
     return events;
   }
+  async filteEvents(
+    latitude: number,
+    longitude: number,
+    name: string,
+    date: Date,
+    category: string,
+    radius: string,
+    price: string
+  ) {
+    const events = await this.eventRepository.findEventsByFilter(
+      name,
+      date,
+      category,
+      price
+    );
+
+    return events;
+  }
+
+  async findEventsMain() {
+    const events = await this.eventRepository.findEventsMain(new Date());
+
+    return events;
+  }
+
   async findEventsByName(name: string) {
     if (!name) throw new HttpException(400, "Name is required");
     const events = await this.eventRepository.findEventsByName(name);
@@ -83,17 +109,17 @@ class EventUseCase {
       name,
       email,
     };
-    let user: any = {}
-    const verifyIsUserExists = await userRepository.verifyIsUserExist(email)
-    if(!verifyIsUserExists){
-      user = await userRepository.add(participant)
+    let user: any = {};
+    const verifyIsUserExists = await userRepository.verifyIsUserExist(email);
+    if (!verifyIsUserExists) {
+      user = await userRepository.add(participant);
     } else {
-      user = verifyIsUserExists
+      user = verifyIsUserExists;
     }
-    if(event.participants.includes(user._id))
-      throw new HttpException(400, 'User already exist')
+    if (event.participants.includes(user._id))
+      throw new HttpException(400, "User already exist");
 
-    event.participants.push(user._id)
+    event.participants.push(user._id);
 
     const updateEvent = await this.eventRepository.update(event, id);
     console.log(
@@ -115,7 +141,12 @@ class EventUseCase {
             type.types.includes("administrative_area_level_2") &&
             type.types.includes("political")
         );
-        return cityType.long_name;
+        const formattedAddress = response.data.results[0].formatted_address;
+
+        return {
+          cityName: cityType.long_name,
+          formattedAddress,
+        };
       }
       throw new HttpException(404, "City not found");
     } catch (error) {

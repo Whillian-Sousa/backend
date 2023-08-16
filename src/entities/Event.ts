@@ -1,7 +1,6 @@
 import { Location } from "./Location";
 import { Price } from "./Price";
 import { User } from "./User";
-
 class Event {
     constructor(
         public title: string,
@@ -14,7 +13,8 @@ class Event {
         public participants: User[],
         public price: Price[],
         public city: string,
-        public categories: string[]
+        public categories: string[],
+        public formattedAddress: string
     ){}
 }
 export {Event}
