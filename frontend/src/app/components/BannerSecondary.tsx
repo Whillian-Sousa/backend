@@ -2,7 +2,7 @@
 export const BannerSecondary = ({ event }: any) => {
   const image = `http://localhost:3333/uploads/${event.banner}`;
   const date = new Date(event.date);
-  const address = event.formattedAddress.split('-')
+  const address = event?.formattedAddress?.split('-')
   return (
     <div className="rounded">
       <div

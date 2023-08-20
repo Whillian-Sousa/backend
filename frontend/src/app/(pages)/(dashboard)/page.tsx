@@ -21,7 +21,7 @@ export default async function Dashboard() {
         </div>
 
         <div className="grid grid-cols-3 gap-4 mb-4">
-          {secondareResponse.map((event) => (
+          {secondareResponse.map((event: any) => (
           <>  
           <BannerSecondary event={event} />
           </>

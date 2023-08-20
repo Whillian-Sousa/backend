@@ -93,5 +93,24 @@ class EventRepositoryMongoose implements EventRepository {
 
     return findEvent.map((event) => event.toObject());
   }
+  async findEventsByFilter(
+    name: string,
+    date: Date,
+    category: string,
+    price: string
+  ): Promise<Event[]> {
+    const findEvent = await EventModel.find({
+      title: {
+        $regex: name,
+        $options: "i",
+      }
+      // date: {
+      //   $gte: date
+      // },
+      // categories: category 
+    }).exec();
+
+    return findEvent.map((event) => event.toObject());
+  }
 }
 export { EventRepositoryMongoose };
